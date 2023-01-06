@@ -1,19 +1,25 @@
+
 import {TbAccessibleOff } from "react-icons/tb";
-export default function HeadingTable({title}){
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+
+
+export default function Heading({title, handleShow}){
+
     return(
       <>
- 
-
         <div className=" d-flex justify-content-between align-items-center">
           <div>
             <h1>{title}</h1>
           </div>
           <div>
-            <button className="btn btn-sm btn-primary">Create <TbAccessibleOff/></button>
+            
+            <Button  size="sm " variant="primary" onClick={handleShow}>CCCCreate
+              <TbAccessibleOff/></Button>
+            
           </div>
         </div>
       
       </>
     )
 }
-
