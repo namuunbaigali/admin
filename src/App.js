@@ -1,40 +1,42 @@
 import "./styles/style.css";
 import "./styles/bootstrap.css";
-import Navbar from "./components/navbar";
-import HeadingTable from "./components/Heading";
-import Table from "./components/table";
-// import Select from "react-select";
-import Select from "react-select";
+import Navbar from "./components/Navbar";
 import DynamicModal from "./components/utils/DynamicModal";
 import { useState } from "react";
-import PostCrete from "./components/Blogs/PostCreate";
+import PostCreate from "./components/Blogs/PostCreate";
+import Heading from "./components/Heading";
+import { Route, Routes } from "react-router-dom";
+import Articles from "./page/Articles";
+import Home from "./page/Home";
 
-function App() {
+export default function App() {
   const [show, setShow] = useState(false);
+  const [menuShow, setMenuShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const options = [
-  //   { value: "chocolate", label: "nohoi" },
-  //   { value: "strawberry", label: "gahia" },
-  //   { value: "vanilla", label: "huts" },
-  //   { value: "vanilla", label: "uhna" },
-  // ];
   return (
     <>
-      <Navbar />
-      <div className="container-sm body-container">
-        <DynamicModal
-          show={show}
-          handleClose={handleClose}
-          title=" Create post"
-          content={<PostCrete />}
-        />
-        <HeadingTable title="Blog posts" handleShow={handleShow} />
-        <Table />
+      <Navbar onToggle={() => setMenuShow(!menuShow)} />
+      <div className="main-wrapper">
+        <div className={`off-menu bg-dark ${menuShow && "show"}`}>Test</div>
+        <div className="off-menu-sibling">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/articles"
+              element={<Articles menuShow={menuShow} handleShow={handleShow} />}
+            />
+          </Routes>
+        </div>
       </div>
+      <DynamicModal
+        show={show}
+        handleClose={handleClose}
+        title="Create post"
+        content={<PostCreate />}
+      />
     </>
   );
 }
-export default App;

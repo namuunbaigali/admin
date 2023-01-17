@@ -1,3 +1,35 @@
 .body-container{
     max-width: 700px;
 }
+
+.main-wrapper{
+    /* display: flex;
+    position: relative; */
+
+}
+
+.off-menu{
+    position: fixed;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    transition: 0.2s all;
+}
+
+.off-mrnu-sibling{
+    transition: 0.2s all;
+    padding-left: 200px;
+}
+
+.off-menu-hidden{
+    left: -200px;
+}
+
+.off-menu-hidden+  .off-mrnu-sibling{
+    padding-left: 0;
+}
+
+.navbar-toggler{
+    display: ;
+}
